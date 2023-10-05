@@ -1,14 +1,22 @@
 package repository;
 
-import core.domain.Book;
-import usecase.interfaces.IBookRepository;
-
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import core.domain.Book;
+import usecase.exceptions.BookAlreadyExistsExcepetion;
+import usecase.interfaces.IBookRepository;
+
 public class BookRepository implements IBookRepository {
-    public Book createBook() {
-        // PR
-        return null;
+    private final List<Book> books = new ArrayList<Book>();
+
+    public Book createBook(Book book) throws BookAlreadyExistsExcepetion {
+        String isbn = book.getIsbn();
+        Book existingBook = books.stream().filter(b -> b.getIsbn().equals(isbn)).findFirst().orElse(null);
+        if (existingBook != null) throw new BookAlreadyExistsExcepetion(isbn);
+        books.add(book);
+        return book;
     }
     public List<Book> getBooks() {
         // PR
