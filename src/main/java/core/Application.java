@@ -1,4 +1,4 @@
-package core.domain;tat
+package core.domain;
 
 import core.interfaces.IPresenter;
 import presentation.TuiPresenter;
