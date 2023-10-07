@@ -10,6 +10,12 @@ import java.util.List;
 public interface IBookRepository {
     public Book createBook(
            /* ... */
+        String isbn,
+        String name,
+        String author,
+        String publisher,
+        Date publishedAt,
+        int totalPage
     );
     public List<Book> getBooks();
     public Book getUserById(String id);
