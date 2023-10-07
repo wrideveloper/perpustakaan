@@ -3,7 +3,7 @@ package usecase.interfaces;
 import core.domain.Book;
 import usecase.exceptions.BookAlreadyExistsException;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public interface IBookRepository {
