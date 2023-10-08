@@ -3,15 +3,12 @@ package repository;
 import core.domain.Book;
 import usecase.interfaces.IBookRepository;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class BookRepository implements IBookRepository {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private final List<Book> books = new ArrayList<Book>();
     public BookRepository()   {
         books.add(new Book("123","Buku 1","Musashi","PT. Berkah",LocalDate.of(2003, 02, 20),200));
