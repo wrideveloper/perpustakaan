@@ -1,12 +1,12 @@
 package repository;
 
-import core.domain.Book;
-import usecase.interfaces.IBookRepository;
-
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import core.domain.Book;
+import usecase.exceptions.BookAlreadyExistsException;
+import usecase.interfaces.IBookRepository;
 
 
 public class BookRepository implements IBookRepository {
@@ -15,7 +15,7 @@ public class BookRepository implements IBookRepository {
     public BookRepository()   {
         books.add(new Book("123","Buku 1","Musashi","PT. Berkah",d1,200));
         books.add(new Book("124","Buku 2","Albert","PT. Berkah",d1,230));
-    }
+      
     public Book createBook(String isbn, String name, String author, String publisher, Date publishedAt, int totalPage) throws BookAlreadyExistsException {
         Book existingBook = books.stream().filter(book -> book.getIsbn().equals(isbn)).findFirst().orElse(null);
         if (existingBook != null) throw new BookAlreadyExistsException(isbn);
